@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <div style="text-align : center;" *ngIf="!toggleHome">
+    <h1>Find your Match</h1>
+    <p class="lead">come on in to view you matches... all you need to do is signUp </p>
+    <div class="text-center">
+        <button class="btn btn-primary btn-lg me-2" (click)="registerToggle()">Register</button>
+        <button class="btn btn-info btn-lg ">Learn More</button>
+    </div>
+</div>
+
+    <div class="container" *ngIf="toggleHome">
+        <div class="row justify-content-center">
+            <div class="col-4">
+               <app-register (closeRegisterForm)="toggleHome=false"></app-register>
+            </div>
+        </div>
+    </div>
+</div>
