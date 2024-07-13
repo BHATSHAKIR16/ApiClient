@@ -1,5 +1,7 @@
 import { isPlatformWorkerApp } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { AccountService } from 'src/app/_services/account.service';
 import { User } from 'src/app/models/userModel';
@@ -13,7 +15,9 @@ export class NavbarComponent implements OnInit{
   model : any = {}
   isLoggedIn : boolean = false;
   currentUser$ : Observable<User | null> = of(null);
-  constructor(private accountService : AccountService){
+  constructor(public accountService : AccountService, private router : Router,
+    private toastr : ToastrService
+  ){
 
   }
   ngOnInit(): void {
@@ -31,10 +35,13 @@ login(){
   console.log(this.model)
   this.accountService.login(this.model).subscribe({
     next : res =>{
-      console.log(res);
+      this.router.navigateByUrl('/members')
       this.isLoggedIn = true;
     },
-    error : err => console.log(err)
+    error : err => {
+      console.log(err)
+      this.toastr.error(err.error)
+    }
   })
 }
 logOut(){

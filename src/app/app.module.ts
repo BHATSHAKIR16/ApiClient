@@ -8,15 +8,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './Components/navbar/navbar.component'
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { HomeComponent } from './components/home/home.component';
-import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './Components/home/home.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { ListsComponent } from './Components/lists/lists.component';
+import { MemberDetailComponent } from './Components/Members/member-detail/member-detail.component';
+import { MemberListComponent } from './Components/Members/member-list/member-list.component';
+import { MessagesComponent } from './Components/messages/messages.component';
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './_modules/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListsComponent,
+    MemberDetailComponent,
+    MemberListComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +34,7 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
